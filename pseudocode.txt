@@ -1,0 +1,80 @@
+START
+
+DISPLAY "Welcome to the Monthly Budget Calculator"
+
+SET repeatProgram = "yes"
+
+WHILE repeatProgram == "yes"
+
+    // --- INPUT INCOME ---
+    PROMPT "Enter your monthly income: "
+    GET income
+
+    WHILE income is NOT a valid number OR income < 0
+        DISPLAY "Invalid entry. Please enter a positive number."
+        PROMPT "Enter your monthly income: "
+        GET income
+    END WHILE
+
+
+    // --- INPUT EXPENSES ---
+    PROMPT "Enter rent amount: "
+    GET rent
+    VALIDATE rent
+
+    PROMPT "Enter food amount: "
+    GET food
+    VALIDATE food
+
+    PROMPT "Enter gas amount: "
+    GET gas
+    VALIDATE gas
+
+    PROMPT "Enter utilities amount: "
+    GET utilities
+    VALIDATE utilities
+
+    PROMPT "Enter childcare amount: "
+    GET childcare
+    VALIDATE childcare
+
+    PROMPT "Enter miscellaneous expenses: "
+    GET misc
+    VALIDATE misc
+
+
+    // --- CALCULATIONS ---
+    SET totalExpenses = rent + food + gas + utilities + childcare + misc
+    SET remaining = income - totalExpenses
+
+
+    // --- DETERMINE STATUS ---
+    IF remaining < 0 THEN
+        SET status = "Over Budget"
+    ELSE
+        SET status = "Under Budget"
+    END IF
+
+
+    // --- OUTPUT RESULTS ---
+    DISPLAY "Total Income: ", income
+    DISPLAY "Total Expenses: ", totalExpenses
+    DISPLAY "Remaining Balance: ", remaining
+    DISPLAY "Status: ", status
+
+
+    // --- REPEAT OPTION ---
+    PROMPT "Do you want to calculate another month? (yes/no): "
+    GET repeatProgram
+
+    WHILE repeatProgram is NOT "yes" AND repeatProgram is NOT "no"
+        DISPLAY "Invalid choice. Enter yes or no."
+        PROMPT "Do you want to calculate another month? (yes/no): "
+        GET repeatProgram
+    END WHILE
+
+END WHILE
+
+DISPLAY "Thank you for using the Monthly Budget Calculator."
+
+END
