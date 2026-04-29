@@ -9,6 +9,17 @@ How to Run
 gcc budget.c -o budget
 ./budget
 
+User Instructions
+Run the program
+
+Enter income
+
+Enter each expense category
+
+Review totals and budget status
+
+Repeat as needed
+
 Input Format
 The program prompts the user for:
 
