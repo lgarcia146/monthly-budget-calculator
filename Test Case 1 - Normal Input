@@ -1,0 +1,16 @@
+Welcome to the Monthly Budget Calculator
+Enter total monthly income: 3000
+Enter rent amount: 2350
+Enter food amount: 0
+Enter gas amount: 0
+Enter utilities amount: 0
+Enter childcare amount: 0
+Enter miscellaneous expenses: 0
+
+--- Monthly Budget Summary ---
+Total Income: 3000.00
+Total Expenses: 2350.00
+Remaining: 650.00
+Status: Under Budget
+
+Do you want to calculate another month? (yes/no): 
