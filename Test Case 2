@@ -1,0 +1,16 @@
+Do you want to calculate another month? (yes/no): yes
+Enter total monthly income: 2000
+Enter rent amount: 500
+Enter food amount: 500
+Enter gas amount: 50
+Enter utilities amount: 50
+Enter childcare amount: 100
+Enter miscellaneous expenses: 800
+
+--- Monthly Budget Summary ---
+Total Income: 2000.00
+Total Expenses: 2000.00
+Remaining: 0.00
+Status: Under Budget
+
+Do you want to calculate another month? (yes/no): 
