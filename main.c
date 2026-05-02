@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-// Function to safely get a positive number
+// Function enter dollar amount avalible for the month
 float getNumber(char prompt[]) {
     float value;
     int valid;
