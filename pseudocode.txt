@@ -1,87 +1,101 @@
 START
 
-// Budget to help manage funds during the month
-DISPLAY "Welcome to the Monthly Budget Calculator"
+    // This message welcomes the user and explains what the program is for
+    DISPLAY "Welcome to the Monthly Budget Calculator"
 
-SET repeatProgram = "yes"
+    // This variable controls whether the program repeats
+    SET repeatProgram = "yes"
 
-WHILE repeatProgram == "yes"
+    // This loop keeps running as long as the user types "yes"
+    WHILE repeatProgram == "yes"
 
-    // --- INPUT INCOME ---
-    //Enter all funds recieved for the month. (pay check and any additional funds received.)
-    PROMPT "Enter your monthly income: "
-    GET income
-
-    WHILE income is NOT a valid number OR income < 0
-        DISPLAY "Invalid entry. Please enter a positive number."
+        // --- INPUT INCOME ---
+        // Ask the user to enter all money received for the month
+        // This includes paychecks and any additional income
         PROMPT "Enter your monthly income: "
         GET income
-    END WHILE
+
+        // This loop checks if the income entered is valid
+        // It repeats until the user enters a positive number
+        WHILE income is NOT a valid number OR income < 0
+            DISPLAY "Invalid entry. Please enter a positive number."
+            PROMPT "Enter your monthly income: "
+            GET income
+        END WHILE
 
 
-    // --- INPUT EXPENSES ---
-    //List of expenses for month, enter estimated amount to spend rounding up.
-    PROMPT "Enter rent amount: "
-    GET rent
-    VALIDATE rent
+        // --- INPUT EXPENSES ---
+        // The next section collects all monthly expenses
+        // The user enters estimated amounts for each category
 
-    PROMPT "Enter food amount: "
-    GET food
-    VALIDATE food
+        PROMPT "Enter rent amount: "
+        GET rent
+        VALIDATE rent      // Makes sure rent is a valid number
 
-    PROMPT "Enter gas amount: "
-    GET gas
-    VALIDATE gas
+        PROMPT "Enter food amount: "
+        GET food
+        VALIDATE food
 
-    PROMPT "Enter utilities amount: "
-    GET utilities
-    VALIDATE utilities
+        PROMPT "Enter gas amount: "
+        GET gas
+        VALIDATE gas
 
-    PROMPT "Enter childcare amount: "
-    GET childcare
-    VALIDATE childcare
+        PROMPT "Enter utilities amount: "
+        GET utilities
+        VALIDATE utilities
 
-    PROMPT "Enter miscellaneous expenses: "
-    GET misc
-    VALIDATE misc
+        PROMPT "Enter childcare amount: "
+        GET childcare
+        VALIDATE childcare
 
-
-    // --- CALCULATIONS ---
-    //Calculate all expenses and subtract from monthly budget
-    SET totalExpenses = rent + food + gas + utilities + childcare + misc
-    SET remaining = income - totalExpenses
+        PROMPT "Enter miscellaneous expenses: "
+        GET misc
+        VALIDATE misc
 
 
-    // --- DETERMINE STATUS ---
-    //Is the total positive or negitive for the month?
-    IF remaining < 0 THEN
-        SET status = "Over Budget"
-    ELSE
-        SET status = "Under Budget"
-    END IF
+        // --- CALCULATIONS ---
+        // Add all expenses together to get the total monthly spending
+        SET totalExpenses = rent + food + gas + utilities + childcare + misc
+
+        // Subtract expenses from income to find out how much money is left
+        SET remaining = income - totalExpenses
 
 
-    // --- OUTPUT RESULTS ---
-    //List all items for review
-    DISPLAY "Total Income: ", income
-    DISPLAY "Total Expenses: ", totalExpenses
-    DISPLAY "Remaining Balance: ", remaining
-    DISPLAY "Status: ", status
+        // --- DETERMINE STATUS ---
+        // This section checks whether the user is over or under budget
+        // If remaining money is negative → over budget
+        // If remaining money is zero or positive → under budget
+        IF remaining < 0 THEN
+            SET status = "Over Budget"
+        ELSE
+            SET status = "Under Budget"
+        END IF
 
 
-    // --- REPEAT OPTION ---
-    // Does user want to calculate another month?
-    PROMPT "Do you want to calculate another month? (yes/no): "
-    GET repeatProgram
+        // --- OUTPUT RESULTS ---
+        // Display all results so the user can review their monthly budget
+        DISPLAY "Total Income: ", income
+        DISPLAY "Total Expenses: ", totalExpenses
+        DISPLAY "Remaining Balance: ", remaining
+        DISPLAY "Status: ", status
 
-    WHILE repeatProgram is NOT "yes" AND repeatProgram is NOT "no"
-        DISPLAY "Invalid choice. Enter yes or no."
+
+        // --- REPEAT OPTION ---
+        // Ask the user if they want to calculate another month
         PROMPT "Do you want to calculate another month? (yes/no): "
         GET repeatProgram
+
+        // This loop ensures the user enters only "yes" or "no"
+        WHILE repeatProgram is NOT "yes" AND repeatProgram is NOT "no"
+            DISPLAY "Invalid choice. Enter yes or no."
+            PROMPT "Do you want to calculate another month? (yes/no): "
+            GET repeatProgram
+        END WHILE
+
     END WHILE
 
-END WHILE
-
-DISPLAY "Thank you for using the Monthly Budget Calculator."
+    // Final message when the user chooses not to repeat the program
+    DISPLAY "Thank you for using the Monthly Budget Calculator."
 
 END
+
